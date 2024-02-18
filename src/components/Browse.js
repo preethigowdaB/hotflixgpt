@@ -5,9 +5,9 @@ import useTopRatedMovies from "../custom hooks/useTopRatedMovies";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
-import GPTSearchPage from "./GPTSearchPage";
 import { removegptMovieResult } from "../store/gptSlice";
-
+import { Suspense, lazy } from "react";
+const GPTSearchPage = lazy(() => import("./GPTSearchPage"));
 const Browse = () => {
   useOnPlayingMovies();
   usePopularMovies();
@@ -23,7 +23,15 @@ const Browse = () => {
     <div className="text-white w-screen">
       <Header />
       {gptview ? (
-        <GPTSearchPage />
+        <Suspense
+          fallback={
+            <div>
+              <h1>Loading...</h1>
+            </div>
+          }
+        >
+          <GPTSearchPage />
+        </Suspense>
       ) : (
         <>
           <MainContainer />
