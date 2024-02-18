@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
-import MovieList from "./MovieList";
 import search from "../Image/search.svg";
-
+const MovieList=lazy(()=>import ("./MovieList"))
 const GPTResult = () => {
   const { movieNames, movieResults } = useSelector((store) => store.gpt);
   if (!movieNames && !movieResults) {

@@ -1,6 +1,7 @@
+import { lazy } from "react";
 import { BACK_IMG } from "../utils/constants";
-import GPTResult from "./GPTResult";
-import GPTSearch from "./GPTSearch";
+const GPTResult=lazy(()=>import("./GPTResult"))
+const GPTSearch=lazy(()=>import("./GPTSearch"))
 
 const GPTSearchPage = () => {
   return (
